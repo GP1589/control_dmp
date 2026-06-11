@@ -1,13 +1,26 @@
 # Control - App de IA/ML en Contenedor (UNI 2026)
 
+### Repositorio Github: https://github.com/GP1589/control_dmp
+
 Esta es una API de Asistente de IA Multilingüe implementada con **FastAPI** y el modelo `gemini-2.5-flash` a través del SDK `google-genai`. La aplicación está empaquetada en un contenedor Docker optimizado para producción usando `uv`. 
 Cumple con el caso de uso de **QA sobre una página web**.
 
 ## Requisitos Previos
+- Cuenta en GitHub.
+- Git instalado en la máquina.
 - Docker instalado en la máquina.
 - API KEY de Google AI Studio.
 
-## 1. Cómo construir la imagen
+## 1. Clonar el repositorio y preparar el entorno
+
+Primero, debes clonar este repositorio en tu máquina local y navegar a la raíz del proyecto a través de la terminal:
+
+```bash
+git clone https://github.com/GP1589/control_dmp.git
+cd control_dmp
+```
+
+## 2. Cómo construir la imagen
 
 Ejecuta el siguiente comando en la raíz del proyecto para construir la imagen de Docker de forma rápida:
 
@@ -15,7 +28,7 @@ Ejecuta el siguiente comando en la raíz del proyecto para construir la imagen d
 docker build -t uni-gemini-app .
 ```
 
-## 2. Cómo correrla (pasando la API Key)
+## 3. Cómo correrla (pasando la API Key)
 
 El contenedor requiere la inyección de la variable de entorno `GEMINI_API_KEY` durante el tiempo de ejecución. El puerto interno de la API es el `8000`.
 
@@ -23,7 +36,7 @@ El contenedor requiere la inyección de la variable de entorno `GEMINI_API_KEY` 
 docker run --rm -p 8000:8000 -e GEMINI_API_KEY="TU_API_KEY_AQUÍ" uni-gemini-app
 ```
 
-## 3. Ejemplo exacto de entrada y respuesta
+## 4. Ejemplo exacto de entrada y respuesta
 
 Una vez que el contenedor esté corriendo, la API descargará el contenido de la URL enviada al endpoint `/ask` y responderá a la pregunta de forma multilingüe basada en ese contexto.
 
